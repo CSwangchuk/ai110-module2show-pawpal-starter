@@ -1,0 +1,34 @@
+classDiagram
+    class Task {
+        +str name
+        +str time
+        +int duration
+        +str priority
+        +str frequency
+        +bool is_complete
+    }
+    class Pet {
+        +str name
+        +str breed
+        +int age
+        +str health_issues
+        +List~Task~ tasks
+    }
+    class Owner {
+        +str name
+        +List~Pet~ pets
+        +str available_time
+    }
+    class Scheduler {
+        +Owner owner
+        +sort_by_time() List~Task~
+        +detect_conflicts() List
+        +generate_plan() List
+        +filter_tasks() List~Task~
+    }
+
+    Owner "1" --> "*" Pet : owns
+    Pet "1" --> "*" Task : has
+    Scheduler --> Owner : reads
+    Scheduler ..> Pet : reads
+    Scheduler ..> Task : schedules
