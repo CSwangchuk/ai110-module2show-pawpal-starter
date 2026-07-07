@@ -70,13 +70,17 @@ pytest --cov
 Sample test output:
 
 ```
-test_add_task_increases_task_count ... ok
-test_new_pet_has_independent_task_list ... ok
-test_detect_conflicts_flags_overlap ... ok
-test_filter_tasks_excludes_completed ... ok
-test_no_false_conflict_when_back_to_back ... ok
-test_sort_by_time_orders_across_pets ... ok
-test_mark_complete_sets_is_complete_true ... ok
+test_add_task_increases_task_count (test_pawpal_system.TestPet.test_add_task_increases_task_count) ... ok
+test_new_pet_has_independent_task_list (test_pawpal_system.TestPet.test_new_pet_has_independent_task_list) ... ok
+test_complete_daily_task_rolls_over_to_tomorrow (test_pawpal_system.TestScheduler.test_complete_daily_task_rolls_over_to_tomorrow) ... ok
+test_detect_conflicts_flags_overlap (test_pawpal_system.TestScheduler.test_detect_conflicts_flags_overlap) ... ok
+test_filter_tasks_excludes_completed (test_pawpal_system.TestScheduler.test_filter_tasks_excludes_completed) ... ok
+test_no_false_conflict_when_back_to_back (test_pawpal_system.TestScheduler.test_no_false_conflict_when_back_to_back) ... ok
+test_sort_by_time_orders_across_pets (test_pawpal_system.TestScheduler.test_sort_by_time_orders_across_pets) ... ok
+test_mark_complete_sets_is_complete_true (test_pawpal_system.TestTask.test_mark_complete_sets_is_complete_true) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.000s
 ```
 
 ## 📐 Smarter Scheduling
@@ -85,10 +89,10 @@ test_mark_complete_sets_is_complete_true ... ok
 
 | Feature | Method(s) | Notes |
 |---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| Task sorting |Scheduler.sort_by_time() | Sorts tasks earliest to latest |
+| Filtering | Scheduler.filter_tasks()| Skips completed tasks |
+| Conflict handling | Scheduler.detect_conflicts() | Flags overlapping time windows|
+| Recurring tasks |Scheduler.complete_task() | Rolls daily tasks over to tomorrow|
 
 ## 📸 Demo Walkthrough
 
