@@ -98,10 +98,15 @@ Ran 8 tests in 0.000s
 
 Describe your app in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+Open PawPal+.
+Enter owner information.
+Add pet Mochi.
+Add Morning Walk at 07:30.
+Add Vet Medication at 07:30 to demonstrate conflict detection.
+Show the overlap warning.
+Change the medication time to 08:00.
+Rebuild the schedule.
+Mark the walk as completed.
+Finish by highlighting the organized daily schedule and progress tracking.
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->

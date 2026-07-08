@@ -106,8 +106,36 @@ if st.button("Add task"):
 
 st.divider()
 
+# --- List tasks with a per-task "Mark Complete" action ---
+st.subheader("4. Tasks & Progress")
+
+scheduler = Scheduler(owner)
+
+any_tasks = False
+for pet_index, pet in enumerate(owner.pets):
+    for task_index, task in enumerate(pet.tasks):
+        any_tasks = True
+        label_col, button_col = st.columns([4, 1])
+        status = "✅" if task.is_complete else "⬜"
+        label_col.write(
+            f"{status} **{pet.name}** — {task.time} {task.name} "
+            f"({task.duration} min, {task.priority} priority)"
+        )
+        if button_col.button(
+            "Mark Complete",
+            key=f"complete-{pet_index}-{task_index}",
+            disabled=task.is_complete,
+        ):
+            scheduler.complete_task(task)
+            st.rerun()
+
+if not any_tasks:
+    st.info("No tasks yet. Add some tasks above.")
+
+st.divider()
+
 # --- Generate the schedule via the Scheduler ---
-st.subheader("4. Build Schedule")
+st.subheader("5. Build Schedule")
 
 if st.button("Generate schedule"):
     scheduler = Scheduler(owner)
